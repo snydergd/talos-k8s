@@ -1,0 +1,4 @@
+talos-8we-dmx talos-worker2 192.168.240.142
+talos-s3t-632 talos-primary 192.168.240.104
+talos-xhs-8xe talos-worker 192.168.240.108
+talos-worker3 192.168.240.100

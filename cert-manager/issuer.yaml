@@ -1,0 +1,30 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-pve-prod
+  namespace: default
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    #server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: snydergd91@gmail.com
+
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-pve-prod-private
+
+    # ACME DNS-01 provider configurations
+    solvers:
+    # An empty 'selector' means that this solver matches all domains
+    - selector:
+        dnsNames:
+          -  '*.pve.gdsnyder.info'
+      dns01:
+        rfc2136:
+          nameserver: 192.168.240.197:53
+          tsigKeyName: local.heliumgreen.net
+          tsigAlgorithm: HMACSHA1
+          tsigSecretSecretRef:
+            name: dns-update-pve
+            key: key
+

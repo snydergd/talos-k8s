@@ -1,0 +1,232 @@
+COMPUTED VALUES:
+controller:
+  affinity: {}
+  annotations: {}
+  appprotect:
+    configManager:
+      image:
+        pullPolicy: IfNotPresent
+        repository: private-registry.nginx.com/nap/waf-config-mgr
+        tag: 5.4.0
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - all
+        runAsNonRoot: true
+        runAsUser: 101
+    enable: false
+    enforcer:
+      host: 127.0.0.1
+      image:
+        pullPolicy: IfNotPresent
+        repository: private-registry.nginx.com/nap/waf-enforcer
+        tag: 5.4.0
+      port: 50000
+      securityContext: {}
+    v5: false
+    volumes:
+    - emptyDir: {}
+      name: app-protect-bd-config
+    - emptyDir: {}
+      name: app-protect-config
+    - emptyDir: {}
+      name: app-protect-bundles
+  appprotectdos:
+    debug: false
+    enable: false
+    maxDaemons: 0
+    maxWorkers: 0
+    memory: 0
+  autoscaling:
+    annotations: {}
+    behavior: {}
+    enabled: false
+    maxReplicas: 3
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: 50
+  config:
+    annotations: {}
+    entries: {}
+  containerPort:
+    http: 80
+    https: 443
+  customConfigMap: ""
+  customPorts: []
+  defaultHTTPListenerPort: 80
+  defaultHTTPSListenerPort: 443
+  defaultTLS:
+    cert: ""
+    key: ""
+    #secret: ""
+    secret: "default/letsencrypt-pve-prod"
+  disableIPV6: false
+  dnsPolicy: ClusterFirst
+  enableCertManager: false
+  enableCustomResources: true
+  enableExternalDNS: false
+  enableLatencyMetrics: false
+  enableOIDC: false
+  enableSSLDynamicReload: true
+  enableSnippets: false
+  enableTLSPassthrough: false
+  enableWeightChangesDynamicReload: false
+  env: []
+  extraContainers: []
+  globalConfiguration:
+    create: false
+    spec: {}
+  healthStatus: false
+  healthStatusURI: /nginx-health
+  hostNetwork: false
+  hostPort:
+    enable: true
+    http: 80
+    https: 443
+  image:
+    pullPolicy: IfNotPresent
+    repository: nginx/nginx-ingress
+  ingressClass:
+    create: true
+    name: nginx
+    setAsDefaultIngress: false
+  initContainerResources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  initContainerSecurityContext: {}
+  initContainers: []
+  kind: daemonset
+  lifecycle: {}
+  logFormat: glog
+  logLevel: info
+  mgmt:
+    licenseTokenSecretName: license-token
+  minReadySeconds: 0
+  name: controller
+  nginxDebug: false
+  nginxReloadTimeout: 60000
+  nginxStatus:
+    allowCidrs: 127.0.0.1
+    enable: true
+    port: 8080
+  nginxplus: false
+  pod:
+    annotations: {}
+    extraLabels: {}
+  podDisruptionBudget:
+    annotations: {}
+    enabled: false
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  readOnlyRootFilesystem: false
+  readyStatus:
+    enable: true
+    initialDelaySeconds: 0
+    port: 8081
+  replicaCount: 1
+  reportIngressStatus:
+    annotations: {}
+    enable: true
+    enableLeaderElection: true
+    ingressLink: ""
+    leaderElectionLockName: ""
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  securityContext: {}
+  selectorLabels: {}
+  service:
+    annotations: {}
+    clusterIP: ""
+    create: true
+    customPorts: []
+    externalIPs: []
+    externalTrafficPolicy: Local
+    extraLabels: {}
+    httpPort:
+      enable: true
+      port: 80
+      targetPort: 80
+    httpsPort:
+      enable: true
+      port: 443
+      targetPort: 443
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    type: LoadBalancer
+  serviceAccount:
+    annotations: {}
+    imagePullSecretName: ""
+    imagePullSecretsNames: []
+  shareProcessNamespace: false
+  strategy: {}
+  telemetryReporting:
+    enable: true
+  terminationGracePeriodSeconds: 30
+  tlsPassthroughPort: 443
+  tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
+  volumeMounts: []
+  volumes: []
+  watchNamespace: ""
+  watchNamespaceLabel: ""
+  watchSecretNamespace: ""
+  wildcardTLS:
+    cert: ""
+    key: ""
+    secret: ""
+nginxAgent:
+  customConfigMap: ""
+  enable: false
+  instanceGroup: ""
+  instanceManager:
+    grpcPort: 443
+    host: ""
+    sni: ""
+    tls:
+      caSecret: ""
+      enabled: true
+      secret: ""
+      skipVerify: false
+  logLevel: error
+  napMonitoring:
+    collectorBufferSize: 50000
+    processorBufferSize: 50000
+  syslog:
+    host: 127.0.0.1
+    port: 1514
+nginxServiceMesh:
+  enable: false
+  enableEgress: false
+prometheus:
+  create: true
+  port: 9113
+  scheme: http
+  secret: ""
+  service:
+    create: false
+    labels:
+      service: nginx-ingress-prometheus-service
+  serviceMonitor:
+    create: false
+    endpoints:
+    - port: prometheus
+    labels: {}
+    selectorMatchLabels:
+      service: nginx-ingress-prometheus-service
+rbac:
+  clusterrole:
+    create: true
+  create: true
+serviceInsight:
+  create: false
+  port: 9114
+  scheme: http
+  secret: ""

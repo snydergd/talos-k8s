@@ -1,0 +1,25 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "l7-visibility"
+spec:
+  endpointSelector:
+    matchLabels:
+      k8s-app: gitea
+  egress:
+  - toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toEndpoints:
+    - matchLabels:
+        "namespace": gitea
+    toPorts:
+    - ports:
+      - port: "3000"
+        protocol: TCP
+      rules:
+        http: [{}]

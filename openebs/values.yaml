@@ -1,0 +1,25 @@
+
+zfs-localpv:
+  zfsNode:
+    encrKeysDir: /var/zfskeys
+#engines:
+#  replicated:
+#    mayastor:
+#      enabled: false
+mayastor:
+  etcd:
+    podAntiAffinityPreset: ""
+    localpvScConfig:
+      basePath: "/var/openebs/local/localpv-hostpath/etcd"
+  loki-stack:
+    localpvScConfig:
+      basePath: "/var/openebs/local/localpv-hostpath/loki"
+localpv-provisioner:
+  hostPathClass:
+    basePath: "/var/openebs/local/localpv-hostpath"
+  hostpathClass:
+    isDefaultClass: true
+  localpv:
+    basePath: "/var/openebs/local/localpv-hostpath"
+
+

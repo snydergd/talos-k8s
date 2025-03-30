@@ -1,0 +1,22 @@
+default_keys: &default_keys >-
+  age1j0sn0kh9r0f0cj8553tjkz8w4rhhedzxdlwrqzy23dk7nhvn8ckqv50jvg,
+  age1ff7vddme9s5gufe9lcyl5fhs0awfkkm0jun22yr5eamwxyca3cpqhy5xte
+creation_rules:
+- path_regex: 'cilium/.*\.env'
+  encrypted_regex: "PASS"
+  age: *default_keys
+- path_regex: '_out/talosconfig'
+  encrypted_regex: 'key'
+  age: *default_keys
+- path_regex: '_out/worker.yaml|_out/controlplane.yaml'
+  encrypted_regex: 'key|token|urls'
+  age: *default_keys
+- path_regex: 'gitea/values.yaml'
+  encrypted_regex: 'password|Password'
+  age: *default_keys
+- path_regex: 'woodpecker/values.yaml'
+  encrypted_regex: 'SECRET'
+  age: *default_keys
+- path_regex: 'cert-manager/secret.yml'
+  encrypted_regex: 'key'
+  age: *default_keys

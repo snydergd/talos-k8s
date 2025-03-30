@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-pve-prod
+  namespace: default
+spec:
+  secretName: letsencrypt-pve-prod
+  issuerRef:
+    name: letsencrypt-pve-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - '*.pve.gdsnyder.info'

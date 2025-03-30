@@ -1,0 +1,56 @@
+server:
+    env:
+        WOODPECKER_ADMIN: snydergd
+        WOODPECKER_HOST: https://woodpecker.pve.gdsnyder.info
+        WOODPECKER_OPEN: true
+        WOODPECKER_GITHUB: true
+        WOODPECKER_GITHUB_CLIENT: Ov23limdm3en5QwfRQyS
+        WOODPECKER_GITHUB_SECRET: ENC[AES256_GCM,data:8qXeFYCnSIx105wyjym/6ee2/xE53xxBTc7gfKCm9P/dK0dJuwWHig==,iv:vGb0QsNwIsD3V9f2QFlURaCBJK/8n1dU6h6YkATgfUM=,tag:MhLv6lQl7iBeUaC+C8YYeA==,type:str]
+    ingress:
+        enabled: true
+        annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+        hosts:
+            - host: woodpecker.pve.gdsnyder.info
+              paths:
+                - path: /
+        ingressClassName: nginx
+        tls:
+            - hosts:
+                - woodpecker.pve.gdsnyder.info
+    persistentVolume:
+        storageClass: openebs-hostpath
+agent:
+    env:
+        WOODPECKER_BACKEND_K8S_STORAGE_RWX: false
+    persistence:
+        storageClass: openebs-hostpath
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1j0sn0kh9r0f0cj8553tjkz8w4rhhedzxdlwrqzy23dk7nhvn8ckqv50jvg
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBKZmlzaTFvUVJmMVVJZ0Jv
+            dEp6akpKSkxrS3RSbjZBOUFHenNlSmgvZngwCmFYR01YTk9URktSeDhUc2NRdVcv
+            bXZJZGs0bGR1enhLcWpVNG9GTWRndVUKLS0tIHhOdE5RcXZEYzByaFRDMFZEZ2Iz
+            TUZvYmVUNmxGTElPQ0dEL0RUNnJzK0UKym1BYt9pAa3zgUECis2L4fDoFzuP2ABr
+            hns+QM/yVUTiQD/dhSEsQtfpqVh+GpenTwtd1Y7CH5a+3613j07AtQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ff7vddme9s5gufe9lcyl5fhs0awfkkm0jun22yr5eamwxyca3cpqhy5xte
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXVHBTa2orMmZHYWxwT1Uv
+            dUtzcmc4T2FKNk1BdTl6c0llTjZleStZTmd3CmtLMW5HaUR5Yy9LcTBVMEhoTURs
+            amRjS00zNUo2VlVGa2lUa0puMlFhZTQKLS0tIFYrL1VyZ0R3SnE3dGticmhBS3pL
+            MEpDNXRDQmJEeGw2cWIvaEt5blpsK3cKNhGESAkO/XvRJ4udzYG8yP8o9E5FFgK5
+            ceGeW77ewfEueXFzT13W7JKMQ9yqeNRlOoP2ZOQCHRwYhG4NL2ozZQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-03-30T20:32:59Z"
+    mac: ENC[AES256_GCM,data:fah/CVNmiioNkW9g6/YZrdy/Z2TjdZTm9J5Ya0zhPjQlhQC/nrXQB4+MyIHlPAH79lu8d92lI+l2oQ2x3olH7kQDWPdkKu3e6yS78fWL2wCMC1RHax/FfUDMYqew3jGH8L1zFj9PKFBEmOVW4N/eeA35Z9EB46M5LiZtUqr9tOs=,iv:0SF6A1Y9kW2N1UUWi6mVzIxDjcISVqxCF6vI0Lr9FL8=,tag:FtoFpQ0RGra2iio7aI6c8w==,type:str]
+    pgp: []
+    encrypted_regex: SECRET
+    version: 3.9.4
