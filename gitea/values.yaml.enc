@@ -65,8 +65,8 @@ gitea:
     admin:
         email: george@snydergd.xyz
         existingSecret: null
-        password: ENC[AES256_GCM,data:XovqjwTVTUwxiNLu05M=,iv:MfAQq3DJcjTBkZ34AbRCQnArWr09S/mEiKVz5G4nwj4=,tag:iKb97GFlDPIPCDlnHTDvsw==,type:str]
-        passwordMode: ENC[AES256_GCM,data:0ldqf2iqybNJL2c=,iv:kmviQIVwTrQcXmL/b6717oBWuxGMVgMViz44ZwjlEFo=,tag:tstdUwJ5VNcP1ND4D1IKhw==,type:str]
+        password: ENC[AES256_GCM,data:Jm/qD0LvCH1dvYbBRNE=,iv:2D/Av/LCmqp2Wads//aA4mSjFK7Ap2PgLBu15JFueWE=,tag:o0p38NOKf+rbq4jE5M/jYA==,type:str]
+        passwordMode: ENC[AES256_GCM,data:EyurbGLgGlYwadU=,iv:D2MQq7ib4Vns1UqJu4p+Lelhzb8i+ZisbpsFNInzKSA=,tag:59bb95R6bCXFjL3xOPq59Q==,type:str]
         username: george
     config:
         server:
@@ -172,7 +172,7 @@ postgresql:
         postgresql:
             auth:
                 database: gitea
-                password: ENC[AES256_GCM,data:A3914FI=,iv:58Pc60HxU+1K3b6L1oGFbHaVtwy0PZg83gYqcx7x5og=,tag:09GDnpJAFrY/wi8QTMEwag==,type:str]
+                password: ENC[AES256_GCM,data:bfMAkZA=,iv:LOOdfMDAQPXjuFAdH1339wyW+8+dmyxfNf6qnMAJkDQ=,tag:j3ncAiaAacqjYzFxtDSfRw==,type:str]
                 username: gitea
             service:
                 ports:
@@ -259,7 +259,7 @@ postgresql-ha:
             postgresql:
                 database: gitea
                 existingSecret: ""
-                password: ENC[AES256_GCM,data:nC2ozeQ=,iv:cGwM/s934Mgm6u1L28hJnfHDQh6geB8HOItvD0CKI2Q=,tag:WPrlpvsj9kWlXDHoq0KJUA==,type:str]
+                password: ENC[AES256_GCM,data:XggzbyU=,iv:qlJgLuRQip7PnKUQvy2FWKYeUJLLJk9jN/LiwbBb5iA=,tag:Moeg+zginBTU7U+GOtTpIw==,type:str]
                 repmgrDatabase: ""
                 repmgrPassword: ""
                 repmgrUsername: ""
@@ -296,7 +296,7 @@ postgresql-ha:
         postgresql:
             database: gitea
             existingSecret: ""
-            password: ENC[AES256_GCM,data:LCvSLgI=,iv:/RJ1H51eQpCieDy9kIKv9H1mpE6A/C41eELnty3bxPo=,tag:C5mpcWTx/riWh6kOV2nRsg==,type:str]
+            password: ENC[AES256_GCM,data:om/V8yo=,iv:hlzUx6e9e9tp5NokVKay4F7ta6FysRG6OdfDJ3HTutc=,tag:MkuFRXlda65l7Guhk0RNAA==,type:str]
             repmgrDatabase: ""
             repmgrPassword: ""
             repmgrUsername: ""
@@ -411,7 +411,7 @@ postgresql-ha:
         whenDeleted: Retain
         whenScaled: Retain
     pgpool:
-        adminPassword: ENC[AES256_GCM,data:Pib9hDWUtRQx,iv:uhhqbiDywZXSowr1S8verV44dxuVR8tKruF4fGbL27w=,tag:kRNKgl7+FV4/H5fxHx1shQ==,type:str]
+        adminPassword: ENC[AES256_GCM,data:1Pv1GD4FBZ7f,iv:0gdsLjWCXJDsf+5fRSa6zeQFPR9L1nm60AROOwQ4myk=,tag:MiHscBovMBHW9ZMJkDK80g==,type:str]
         adminUsername: admin
         affinity: {}
         args: []
@@ -634,7 +634,7 @@ postgresql-ha:
             type: ""
             values: []
         nodeSelector: {}
-        password: ENC[AES256_GCM,data:TGz80xE0zSCf,iv:sOLvkvJ9KBXSNulEHpdxb5AmTU9a1Y9x5EQ5ZwbZnDA=,tag:Aq5HPRF4YED1bOBKht446w==,type:str]
+        password: ENC[AES256_GCM,data:GAQO86/EyWS+,iv:2jAJ9ecWmLr+PABobrVvuSPbrZQBD9IeIT761qZ7H80=,tag:uq/6RpshC+L0udaNF5jv9g==,type:str]
         pdb:
             create: true
             maxUnavailable: ""
@@ -654,7 +654,7 @@ postgresql-ha:
             supplementalGroups: []
             sysctls: []
         postgresConnectionLimit: ""
-        postgresPassword: ENC[AES256_GCM,data:O8bz5G5SVm2H,iv:7pItz/WFykFR7POtOqJvvUrMdjWoOuby9x0MDpiYl9M=,tag:CZ6tBlI5VwplFLCxzx4c+g==,type:str]
+        postgresPassword: ENC[AES256_GCM,data:XCe7yuKGFtDk,iv:Q8/t+WrCmCJQUQESqcT88oIIKLmiwIBhlaEFQvVKBj8=,tag:h2qL6jlExqZDUfofrNYtXA==,type:str]
         preStopDelayAfterPgStopSeconds: 25
         priorityClassName: ""
         readinessProbe:
@@ -674,7 +674,7 @@ postgresql-ha:
         repmgrFenceOldPrimary: false
         repmgrLogLevel: NOTICE
         repmgrPassfilePath: ""
-        repmgrPassword: ENC[AES256_GCM,data:1kHPhxkNbskh,iv:GdiQ0llCzFdbicwFbvM/mscafg3tHZmrPf6DqaqCCo0=,tag:FkPwPs7np4TG9CtaEBZYpA==,type:str]
+        repmgrPassword: ENC[AES256_GCM,data:ye2HaJIRSFj6,iv:8ffeJvvbilJIQhzNDssab8uO0IlLLGXFKv81ZYlhsxw=,tag:+oxMwHbNGg2JP77Z0iKo2g==,type:str]
         repmgrReconnectAttempts: 2
         repmgrReconnectInterval: 3
         repmgrUsePassfile: ""
@@ -886,7 +886,7 @@ redis:
     enabled: false
     global:
         redis:
-            password: ENC[AES256_GCM,data:BXV2roraUn4=,iv:/vgOyYRYeJAIA5hGptcu0MobavZIxHha3+Nm4bzsCyg=,tag:wPl9bWDdfHfXMxhBjo166Q==,type:str]
+            password: ENC[AES256_GCM,data:qhsPMM+UC5M=,iv:FPszSIDwND1sYsS43v2nU9Cth3tNrc9tBSXZSqkbj50=,tag:R/urCdyPpgaaw/KZ2f/T0A==,type:str]
     master:
         count: 1
 redis-cluster:
@@ -1227,8 +1227,8 @@ redis-cluster:
         resources: {}
         resourcesPreset: nano
         tolerations: []
-    usePassword: ENC[AES256_GCM,data:R9yIGlg=,iv:GfJs5i9Qsqi3tCm2IWk/NnIjk6jM3RcQxgqnsacgs5Q=,tag:9bPWsyh5D7a6qeoOl3OJFA==,type:bool]
-    usePasswordFile: ENC[AES256_GCM,data:U7WjoKg=,iv:uVCI0/a1U7JoMqSpYabAcDC9zTeJuNj68TYC/MNUaaQ=,tag:QS1fE3GO+miqrD5YJWPeWw==,type:bool]
+    usePassword: ENC[AES256_GCM,data:XobvrT0=,iv:PH0Z3KMdY/AMSzmTBWGlbUEcTUnWjpXqMY1qJ0C9lXI=,tag:t8wzzszO7Q6I8qqhMCa3aw==,type:bool]
+    usePasswordFile: ENC[AES256_GCM,data:lUmc4XI=,iv:fwVrc6hCyYN4kePhUR94JgfEHRnPm7qoVNzLCqp/mdk=,tag:KVYoUsNGdZY5+ZuIqxEAug==,type:bool]
     volumePermissions:
         containerSecurityContext:
             enabled: true
@@ -1309,26 +1309,35 @@ sops:
     azure_kv: []
     hc_vault: []
     age:
+        - recipient: age1ldd7095er2v9wtw5qg02m37ylcyu706m387hjwvyqt3k035a35dqhnfaur
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2Z2tPQTVoeDlDa3ZJQmJZ
+            dlJsdVNpT2pUalk1MnFlcWg3Ly9ZMFU3ckJNCkh1MzAvNk81elBzR0MwMFdGNWIv
+            Z0oxVC94YkNReUlVSGlhbkVBS3NhOWsKLS0tIGErTFV4ZVMyK1F1NW9Bd2NFTSs0
+            elBzcjA0TGFxeEEwSHhBUm14ZkhLVzAKcPDxiqLWDYfdmgtDHncWdCNZsujrVFAJ
+            SwexAOHpaPBnkEp2zqVIpXb/qCbH1MUBefr/6HVSnC8ZZ9n1ZUaJNA==
+            -----END AGE ENCRYPTED FILE-----
         - recipient: age1j0sn0kh9r0f0cj8553tjkz8w4rhhedzxdlwrqzy23dk7nhvn8ckqv50jvg
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2YXdCZVFEMkRETG1yMDVh
-            ZnI0MkQ2TFlWNFFTbWluNmVGNExHR0NycUJVCmptaWVKMzhYVENOcEhhSFZ5dzZy
-            WVdEeDh3cU03VHM4VXZ2QWtFRlVSck0KLS0tIHY1YlU4Y1B4dHRFYitVVVd6eWN3
-            QVdMUGV1QWp4OTNLZDNOVCtCWEY0cEEKj1rIlXeXuMv3xPhOUugiRxZGtEp/AqM3
-            HIbdDni+AFwAkeNqVwLGydNp5aD4IvzsJt+Hh1S5u0dtQGTX6v/Tgg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVeTdsRVloa0VWcHIxNlc2
+            SVpsQmpoMnRHdzQ5TDZuWEdYY1I4ck5ZU1NrCmhaVlZ5bHd2QmtTcU03WTQ4bjhB
+            Sm0rdFU4MWxqYWZsbjJ2NnBlMlMvejAKLS0tIGZyYk1sYXZXZUpPZnBxM1VIYnFW
+            Z29VSmhYSEhVRFFtd250N3Nydk4yWk0KCkWDJFJLVOrRAryagvYpf9NGqDnAesYd
+            uV/AS9lWIK1i6TubGCeyGtSAoYFlG1FIVkJvr/yqaYKsx8z8jGmWpw==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1ff7vddme9s5gufe9lcyl5fhs0awfkkm0jun22yr5eamwxyca3cpqhy5xte
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUR2tWSjE3RTV3emwzSndn
-            VVhXdHFLSTFwYk45Y0p4R0VON0toNzR1K1FvCkJnOTNjUSttR2YzUjBXN1pMcnd4
-            ODlQQ3I1VEFjOXozRmh4OHE0N3ZvQ00KLS0tIE9SNzFsdWxiWUlxRXFKVmZiUWdP
-            ckVOb3RrWWJQcG13a2d1Q0cwVmc4eG8KIr6WOTZpOP6oYjQF8Prz0AuwHLFlnzNa
-            cDc9pkElUpGnr3YKqFs2/qzV5mw4pHB94bTpn90lDWYg87ojiyvYmQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPWThYYnZMNExMV3R0ZGtn
+            N0pvcURLMElVWTA0VWFYRTdZNW1DY2xxMW4wCkFZay9IajFFL2ppQTREcW52Tmc0
+            ZmhicGw1dW16MU9PWDl3di85QXRSdGMKLS0tIFl0UWEvLysxbUczTVBVRXRDVE5Y
+            OU9TSTNFZU1xQWllRDU2NHE1TWRBQmcKEOEm6tD+9KSPMMZOQTwRGboNJtSJ4vzf
+            vY7+3CE6DfJrxMfdFxLm2ALtk37kJJuj/SPZR7g63qJafXigETjL8Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-03-30T20:32:59Z"
-    mac: ENC[AES256_GCM,data:LhbqB1FL55p5Ulp6fanBCkUOhsAb0viF1SaFj9op1GmqXQtH3iRq/Hc9sqG6mJTdm7VuamS1W+iiKxD4uDvZR3rtMtrOowJCqoEijxe8x7R71r4YuN4Z2B4sqqZ4cYESRMHOamdcgD7ynooeZtS0KIjJRUD8nk+8HJrq/L0bcS8=,iv:l2KazxxhygpoFxh9TEH2PvFEVDSQa5qw7lRCsdbC4T4=,tag:UTccEG8O+jO3rxn/AmcRxA==,type:str]
+    lastmodified: "2025-03-30T21:59:42Z"
+    mac: ENC[AES256_GCM,data:zw1uJ03QXMLJJj8/GCLgmOf443yzE/6LviYDLul9qnqFqj6iq3hoLn3bzm3oZHKNv2fv/rg54LLKyyaNy2LwK4IDEGsWwwO17CO2AIOgsMp54IEBA6NhKKFiiSZPivt0ZKOxJIZKGh9ElALFnirYJuGHGEZQyCMUH4E4foMJB2w=,iv:c7eOW9DM96ne+XMyh13wyzP/Fb9728wJRHlP3WnduSE=,tag:2o/Go0Y+ve7ZOKuwwk+h7Q==,type:str]
     pgp: []
     encrypted_regex: password|Password
     version: 3.9.4
