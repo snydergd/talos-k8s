@@ -1,11 +1,11 @@
 apiVersion: "cilium.io/v2"
-kind: CiliumNetworkPolicy
+kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: "l7-visibility"
 spec:
   endpointSelector:
     matchLabels:
-      k8s-app: gitea
+      "k8s:io.kubernetes.pod.namespace": nginx
   egress:
   - toPorts:
     - ports:
@@ -16,7 +16,7 @@ spec:
         - matchPattern: "*"
   - toEndpoints:
     - matchLabels:
-        "namespace": gitea
+        "k8s:io.kubernetes.pod.namespace": gitea
     toPorts:
     - ports:
       - port: "3000"

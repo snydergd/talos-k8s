@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: letsencrypt-pve-prod
-  namespace: default
+  namespace: gitea
 spec:
   secretName: letsencrypt-pve-prod
   issuerRef:

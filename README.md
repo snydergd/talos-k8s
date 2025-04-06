@@ -53,21 +53,12 @@ talosctl bootstrap
 talosctl kubeconfig .
 
 # openebs
+helm repo add openebs https://openebs.github.io/openebs
 kubectl create namespace openebs
 kubectl label --overwrite ns openebs pod-security.kubernetes.io/enforce=privileged
 helm install openebs --namespace openebs openebs/openebs -f openebs/values.yaml --version 4.2.0
 
-# metallb
-
-kubectl create namespace metallb
-kubectl label --overwrite ns metallb pod-security.kubernetes.io/enforce=privileged
-kubectl label --overwrite ns metallb pod-security.kubernetes.io/audit=privileged
-kubectl label --overwrite ns metallb pod-security.kubernetes.io/warn=privileged
-helm repo add metallb https://metallb.github.io/metallb
-helm install metallb metallb/metallb --version=0.14.9 -f metallb/values.yaml -n metallb
-
 # nginx
-
 ## Install CRDs
 mkdir nginx; cd nginx;
 curl -OL https://raw.githubusercontent.com/nginx/kubernetes-ingress/v4.0.1/deploy/crds.yaml
@@ -75,17 +66,19 @@ kubectl apply -f crds.yaml
 
 ## Install chart for ingress
 kubectl create namespace nginx
-kubectl label --overwrite ns nginx pod-security.kubernetes.io/enforce=privileged
-(install or upgrade)
-helm upgrade nginx oci://ghcr.io/nginx/charts/nginx-ingress --version 2.0.1 -f nginx/values.yml -n kube-system
+#kubectl label --overwrite ns nginx pod-security.kubernetes.io/enforce=privileged
+helm install nginx oci://ghcr.io/nginx/charts/nginx-ingress --version 2.0.1 -f nginx/values.yml -n nginx
 
 # Cert manager
-kubectl create namespace cert-manager
-kubectl label --overwrite ns cert-manager pod-security.kubernetes.io/enforce=privileged pod-security.kubernetes.io/warn=privileged pod-security.kubernetes.io/audit=privileged
-helm install cert-manager jetstack/cert-manager -n cert-manager --version=v1.17.0 -f cert-manager/values.yaml
-kubectl apply -f cert-manager/secret.yml # after sops_helper script
-kubectl apply -f cert-manager/issuer.yml
-kubectl apply -f cert-manager/certificate.yml
+make sure to run the sops helper to decrypt secret.yml first
+
+    # kubectl label --overwrite ns cert-manager pod-security.kubernetes.io/enforce=privileged pod-security.kubernetes.io/warn=privileged pod-security.kubernetes.io/audit=privileged
+
+    kubectl create namespace cert-manager
+    helm install cert-manager jetstack/cert-manager -n cert-manager --version=v1.17.0 -f cert-manager/values.yaml
+    kubectl apply -f cert-manager/secret.yml
+    kubectl apply -f cert-manager/issuer.yml
+    kubectl apply -f cert-manager/certificate.yml
 
 # woodpecker
 kubectl create namespace woodpecker
