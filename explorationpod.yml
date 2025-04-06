@@ -2,8 +2,6 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: explore
-  labels:
-    pod-security.kubernetes.io/enforce: privileged
 spec:
   containers:
   - name: nginx-container
@@ -11,12 +9,12 @@ spec:
     command:
       - sleep
       - infinity
-    volumeMounts:
-    - name: host
-      mountPath: /host
-  volumes:
-  - name: host
-    hostPath:
-      path: /var
-      type: Directory
+#    volumeMounts:
+#    - name: host
+#      mountPath: /host
+#  volumes:
+#  - name: host
+#    hostPath:
+#      path: /var
+#      type: Directory
 

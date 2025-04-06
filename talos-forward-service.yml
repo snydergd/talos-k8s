@@ -6,7 +6,6 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
     nginx.ingress.kubernetes.io/proxy-write-timeout: "120"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
   name: talos-ingress-https
   namespace: default
 spec:
@@ -33,9 +32,7 @@ metadata:
   name: talos-forward-service
 subsets:
   - addresses:
-      - ip: 192.168.240.104
-      - ip: 192.168.240.108
-      - ip: 192.168.240.184
+      - ip: 172.16.0.2
     ports:
       - port: 80
         name: http
@@ -58,6 +55,4 @@ spec:
       port: 443
       targetPort: 443
   externalIPs: 
-    - 192.168.240.104
-    - 192.168.240.108
-    - 192.168.240.184
+    - 172.16.0.2

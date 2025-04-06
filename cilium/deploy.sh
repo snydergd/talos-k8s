@@ -13,7 +13,7 @@ echo "# Generate template"
 helm template \
     cilium \
     cilium/cilium \
-    --version 1.17.2 \
+    --version 1.18.0-pre.0 \
     --namespace kube-system \
     --set ipam.mode=kubernetes \
     --set kubeProxyReplacement=true \
@@ -28,18 +28,24 @@ helm template \
     --set k8sServiceHost=localhost \
     --set ingressController.enabled=true \
     --set ingressController.default=true \
-    --set ingressController.loadBalancerMode=dedicated \
+    --set ingressController.loadbalancerMode=shared \
+    --set ingressController.defaultSecretName=letsencrypt-pve-prod \
+    --set ingressController.defaultSecretNamespace=kube-system \
+    --set ingressController.enforceHttps=true \
+    --set gatewayApi.enabled=true \
     --set envoy.enabled=true \
+    --set loadBalancer.l7.backend=envoy \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true \
     --set hubble.ui.ingress.enabled=true \
+    --set hubble.ui.ingress.className=cilium \
     --set 'hubble.ui.ingress.hosts[0]=hubble.pve.gdsnyder.info' \
     --set 'hubble.ui.ingress.tls[0].hosts[0]=hubble.pve.gdsnyder.info' \
     --set k8sServicePort=7445 > cilium.yaml
 
 #    --set hubble.ui.ingress.className=nginx \
 echo "# Get creds for upload"
-sops decrypt --output creds.env creds.sops.env
+sops decrypt --output-type dotenv --input-type dotenv --output creds.env creds.env.enc
 . creds.env
 
 UPLOAD_URL='http://bootstrap.gdsnyder.info/talos/cilium.yaml' 

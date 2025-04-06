@@ -60,7 +60,7 @@ controller:
     cert: ""
     key: ""
     #secret: ""
-    secret: "default/letsencrypt-pve-prod"
+    secret: "kube-system/letsencrypt-pve-prod"
   disableIPV6: false
   dnsPolicy: ClusterFirst
   enableCertManager: false
@@ -81,7 +81,7 @@ controller:
   healthStatusURI: /nginx-health
   hostNetwork: false
   hostPort:
-    enable: true
+    enable: false
     http: 80
     https: 443
   image:
@@ -168,11 +168,11 @@ controller:
     enable: true
   terminationGracePeriodSeconds: 30
   tlsPassthroughPort: 443
-  tolerations:
-      - effect: NoSchedule
-        operator: Exists
-      - effect: NoExecute
-        operator: Exists
+  tolerations: []
+#      - effect: NoSchedule
+#        operator: Exists
+#      - effect: NoExecute
+#        operator: Exists
   volumeMounts: []
   volumes: []
   watchNamespace: ""
@@ -181,7 +181,8 @@ controller:
   wildcardTLS:
     cert: ""
     key: ""
-    secret: ""
+    secret: "kube-system/letsencrypt-pve-prod"
+    #secret: ""
 nginxAgent:
   customConfigMap: ""
   enable: false
