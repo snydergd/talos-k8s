@@ -21,3 +21,9 @@ creation_rules:
 - path_regex: 'cert-manager/secret.yml'
   encrypted_regex: 'key'
   age: *default_keys
+- path_regex: 'pve.json'
+  encrypted_regex: 'secret|token_id|.*pass'
+  age: *default_keys
+- path_regex: 'proxmox/state.tf.json'
+  encrypted_regex: 'secret_key'
+  age: *default_keys

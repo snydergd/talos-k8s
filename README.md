@@ -18,39 +18,37 @@ change to 2 cores
 change memory to 4096
 change disk to 64gb
 Edit VM after creation to add this:
-vi /etc/pve/qemu-server/<vmid>.conf # in proxmox host shell
+
+    vi /etc/pve/qemu-server/<vmid>.conf # in proxmox host shell
+
 create static dhcp lease for mac address
+set boot order to go scsi then ide
 
 The following line:
 
     args: -cpu kvm64,+cx16,+lahf_lm,+popcnt,+sse3,+ssse3,+sse4.1,+sse4.2
 
 # Start up VMs and configure
-VMS will show IPs - you can record like this
-
-CONTROL_PLANE_IP=192.168.240.104
-WORKER_IP=192.168.240.108 # node 1
-WORKER_IP=192.168.240.142 # node 2
 
 already done at this point:
-- # alternate - talosctl gen config talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --output-dir _out
-- talosctl gen config talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --output-dir _out --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.9.2
-
-# cilium
-run decrypt script: `sops_helper.sh decrypt`
-run cilium/deploy.sh to update dav location
+- # alternate - talosctl gen config talos-proxmox-cluster https://talos-control1:6443 --output-dir _out
+- talosctl gen config talos-proxmox-cluster https://talos-control1:6443 --output-dir _out --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.9.2
 
 # Apply/Bootstrap
-talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file _out/controlplane.yaml
-talosctl apply-config --insecure --nodes $WORKER_IP --file _out/worker.yaml
+talosctl apply-config --insecure --nodes talos-control1,talos-control2,talos-control3 --file _out/controlplane.yaml
+talosctl apply-config --insecure --nodes talos-worker1,talos-worker2,talos-worker3,talos-worker4 --file _out/worker.yaml
 
-export TALOSCONFIG="_out/talosconfig"
-talosctl config endpoint $CONTROL_PLANE_IP
-talosctl config node $CONTROL_PLANE_IP
+export TALOSCONFIG="$(readlink -f "_out/talosconfig")"
+talosctl config endpoint talos-control1
+talosctl config node talos-control1
 
 talosctl bootstrap
 
 talosctl kubeconfig .
+
+# cilium
+run decrypt script: `sops_helper.sh decrypt`
+run cilium/deploy.sh to update dav location
 
 # openebs
 helm repo add openebs https://openebs.github.io/openebs

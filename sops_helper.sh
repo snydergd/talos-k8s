@@ -14,10 +14,28 @@ _out/controlplane.yaml
 _out/worker.yaml
 EOF
 )
+
 ENV_FILES=$(cat <<EOF
 cilium/creds.env
 EOF
 )
+
+JSON_FILES=$(cat <<EOF
+pve.json
+proxmox/state.tf.json
+EOF
+)
+
+encrypt_if_different() {
+    output="$1"
+    input="$2"
+    type="$3"
+
+    sops decrypt "$output" --output "/tmp/encryption_test" --output-type="$type" --input-type="$type"
+    if ! cmp "$input" "/tmp/encryption_test"; then
+        sops encrypt "$input" --output "$output" --output-type="$type" --input-type="$type"
+    fi;
+}
 
 IFS=$'\n'
 case "$1" in
@@ -25,11 +43,15 @@ case "$1" in
     echo "Encrypt"
     echo "$YAML_FILES" | while read -r f; do
         echo " - $f (yaml)"
-	sops encrypt --output-type yaml --input-type=yaml --output "$f.enc" "$f"
+        encrypt_if_different "$f.enc" "$f" yaml
     done;
     echo "$ENV_FILES" | while read -r f; do
         echo " - $f (dotenv)"
-	sops encrypt --output-type dotenv --input-type dotenv --output "$f.enc" "$f"
+        encrypt_if_different "$f.enc" "$f" dotenv
+    done;
+    echo "$JSON_FILES" | while read -r f; do
+        echo " - $f (json)"
+        encrypt_if_different "$f.enc" "$f" json
     done;
     ;;
   decrypt)
@@ -41,6 +63,16 @@ case "$1" in
     echo "$ENV_FILES" | while read -r f; do
         echo " - $f (dotenv)"
 	sops decrypt --output-type dotenv --input-type dotenv --output "$f" "$f.enc"
+    done;
+    echo "$JSON_FILES" | while read -r f; do
+        echo " - $f (json)"
+	sops decrypt --output-type json --input-type json --output "$f" "$f.enc"
+    done;
+    ;;
+  reset)
+    echo -e "$YAML_FILES\n$ENV_FILES\n$JSON_FILES" | while read -r f; do
+	echo " - $f"
+        git checkout -- "$f.enc"
     done;
     ;;
 esac;
