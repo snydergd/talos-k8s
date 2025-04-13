@@ -16,6 +16,8 @@ helm template \
     --version 1.18.0-pre.0 \
     --namespace kube-system \
     --set ipam.mode=kubernetes \
+    --set k8s.requireIPv6PodCIDR=false \
+    --set ipv6.enabled=true \
     --set kubeProxyReplacement=true \
     --set k8sClientRateLimit.qps=65 \
     --set k8sClientRateLimit.burst=150 \

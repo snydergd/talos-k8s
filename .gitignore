@@ -6,3 +6,5 @@ gitea/values.yaml
 woodpecker/values.yaml
 cert-manager/secret.yml
 cilium/cilium.yaml
+pve.json
+proxmox/state.tf.json
