@@ -1,0 +1,13 @@
+- op: add
+  path: /cluster/network/podSubnets/1
+  value: 'fd12:3456:789a:1000::/48'
+- op: add
+  path: /cluster/network/serviceSubnets/1
+  value: 'fd12:3456:789a:2000::/108'
+- op: replace
+  path: /cluster/network/cni
+  value:
+    name: custom
+    urls:
+      - http://${httpuser}:${httppassword}@bootstrap.gdsnyder.info/talos/cilium.yaml
+

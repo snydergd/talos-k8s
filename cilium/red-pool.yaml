@@ -3,10 +3,12 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: "red-pool"
 spec:
+  allowFirstLastIPs: 'No'
   blocks:
   - start: "172.16.0.1"
     stop: "172.16.0.254"
-  - cidr: "2600:6c46:4600:f017:1::/80"
+  - start: "2600:6c46:4600:3c20::2"
+    stop:  "2600:6c46:4600:3c20:FFFF:FFFF:FFFF:FFFE"
   serviceSelector:
     matchExpressions:
       - {key: color, operator: NotIn, values: [blue]}

@@ -46,13 +46,10 @@ helm template \
     --set k8sServicePort=7445 > cilium.yaml
 
 #    --set hubble.ui.ingress.className=nginx \
-echo "# Get creds for upload"
-sops decrypt --output-type dotenv --input-type dotenv --output creds.env creds.env.enc
-. creds.env
 
 UPLOAD_URL='http://bootstrap.gdsnyder.info/talos/cilium.yaml' 
 echo "# Upload to $UPLOAD_URL"
-curl -T cilium.yaml "$UPLOAD_URL" -u "${BOOTSTRAP_USER}:${BOOTSTRAP_PASS}"
+curl -T cilium.yaml "$UPLOAD_URL" -u "$(cat ../bootstrap.json | jq -r '[.httpuser, .httppassword] | join(":")')"
 
 echo "# Apply"
 kubectl apply -f cilium.yaml

@@ -1,10 +1,10 @@
 _out/talosconfig
 _out/controlplane.yaml
 _out/worker.yaml
-cilium/creds.env
 gitea/values.yaml
 woodpecker/values.yaml
 cert-manager/secret.yml
 cilium/cilium.yaml
+bootstrap.json
 pve.json
 proxmox/state.tf.json

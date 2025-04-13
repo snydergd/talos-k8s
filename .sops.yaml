@@ -3,9 +3,6 @@ default_keys: &default_keys >-
   age1j0sn0kh9r0f0cj8553tjkz8w4rhhedzxdlwrqzy23dk7nhvn8ckqv50jvg,
   age1ff7vddme9s5gufe9lcyl5fhs0awfkkm0jun22yr5eamwxyca3cpqhy5xte
 creation_rules:
-- path_regex: 'cilium/.*\.env'
-  encrypted_regex: "PASS"
-  age: *default_keys
 - path_regex: '_out/talosconfig'
   encrypted_regex: 'key'
   age: *default_keys
@@ -21,7 +18,7 @@ creation_rules:
 - path_regex: 'cert-manager/secret.yml'
   encrypted_regex: 'key'
   age: *default_keys
-- path_regex: 'pve.json'
+- path_regex: 'pve.json|bootstrap.json'
   encrypted_regex: 'secret|token_id|.*pass'
   age: *default_keys
 - path_regex: 'proxmox/state.tf.json'

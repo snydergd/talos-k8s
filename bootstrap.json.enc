@@ -1,0 +1,29 @@
+{
+	"httpuser": "talos",
+	"httppassword": "ENC[AES256_GCM,data:ihWGIRv/Ni0+PTfcNak=,iv:k6+4r5ZJwDkzc8lwOBV973pSgQwhKMeDEGnCL4ckUJk=,tag:Bo5g7A829BY+RQf67M8Ozw==,type:str]",
+	"sops": {
+		"kms": null,
+		"gcp_kms": null,
+		"azure_kv": null,
+		"hc_vault": null,
+		"age": [
+			{
+				"recipient": "age1ldd7095er2v9wtw5qg02m37ylcyu706m387hjwvyqt3k035a35dqhnfaur",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQT2s1aHRhREpjTTQ0bksw\nS3Y1SExQL0l5aXRmUExFd3RWZG8ra1Q2NDJrCnFDcHczcE8wYm1tK3BxRnhObDFV\nSHJjZE8vVmpVT3BuZFBJZVhJZzBhcGsKLS0tIFgvb2tBbnYxQzRmYlBZdHJvMmJp\nLzJDWjlhUmFZcXVhZzU0WWdyOTRuaWsKnIPpGG/NuZRKS0JjCEYXA3UEOGNVau00\nwqKhJ8lI0fByYKMtJqIg1ytOFUaVYYRI63uttbhDKJeyAJEpoIbqDw==\n-----END AGE ENCRYPTED FILE-----\n"
+			},
+			{
+				"recipient": "age1j0sn0kh9r0f0cj8553tjkz8w4rhhedzxdlwrqzy23dk7nhvn8ckqv50jvg",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBxN0krZ3NuMnBZNWNwdjNP\nRW44MTFsL0EzV1VCZkFFK05lV0pZK0UrWGdBCmZFcnlvRXFtaHFncFN2cktSTmZS\nTVBnRWpmSW9vWGNwY2UrSU9pZGpEdjgKLS0tIHhnTjNnczY3VEFyVXNQUElzdERl\nVWhEVWFkQnJIeEd5d0xwK2g3WEthV3MKOapHlhEVp/8Q8QRQr9YX6sjSaGgE6ETp\nmCROY6U/SCiKdp9M934oJIb7REKkWKKh8/AYZsq/r5b85iar1Fydkw==\n-----END AGE ENCRYPTED FILE-----\n"
+			},
+			{
+				"recipient": "age1ff7vddme9s5gufe9lcyl5fhs0awfkkm0jun22yr5eamwxyca3cpqhy5xte",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3RHhrZm9Qd2h0bEhVYUYv\ndzdqZEROR3BmN2ljbXBPVEhpUzVlRm1QVWp3CjVGNi9SNTI5TUU4VDZtYVVMOVNY\nQnhXVWpVMTZrQ2hsQzM5VS9ma0VhcW8KLS0tIDdLTmFaa1VTWEJsUlZ3eGM5WHBn\nMFlZdDQ3YitvZDI5SWxvOXdOSEVWWUkKIICS8iGx0/XsQYc+rFf2eSiv6A1MEccM\nMey3G5Cc570h5h6NSKwykWSsgkuW2kSzFlgOnhO+XCBYuP5Mv+JQAQ==\n-----END AGE ENCRYPTED FILE-----\n"
+			}
+		],
+		"lastmodified": "2025-04-13T04:22:51Z",
+		"mac": "ENC[AES256_GCM,data:lzokGDaE4+apETR4UGxqjn9vQvDWDltbHTaZfprIQHzU23ITQA356fwrtJXuF5sCyZn2q8iZpZ7nJj8B3GCFoft4KvaWVnsxWgPy0XrGtS7DOH+O+Q4z7tRBaIj+F3/FQ3AOb6fieR68MTV6IK9N+37h3qbcMLbJFb7zGkM70qE=,iv:hE8dJ91DALXRKDwFt4EMGt9Tb0KF0l5Ia69c4KZnU2Y=,tag:jP5jECz6NFyvHntALdnXYQ==,type:str]",
+		"pgp": null,
+		"encrypted_regex": "secret|token_id|.*pass",
+		"version": "3.9.4"
+	}
+}
