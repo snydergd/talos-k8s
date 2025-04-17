@@ -48,7 +48,9 @@ If you want to make changes to it, you'll want to run it again
 # Start up VMs and configure
 
 1. Go into `proxmox` folder
-2. Run `tofu apply` (`tofu` being an open source alternative to `tf`) -- optionally with `-auto-approve`
+2. Run `tofu apply -target=data.talos_cluster_health.cluster_health` (`tofu` being an open source alternative to `tf`) -- optionally with `-auto-approve`
+   - likely need to run it again -- provider doesn't seem to want to start up the VM for me after creation even with `vm_state="running"`
+3. Run simply `tofu apply` to apply remaining resources
 
 # Install config files from outputs
 
@@ -57,7 +59,7 @@ kubeconfig (merge)
     tofu output -raw -show-sensitive kubeconfig > kubeconfig.tmp
     BACKUP_FILE=~"/.kube/config.backup$(date "+%Y-%m-%d_%H%M%S")"
     mv ~/.kube/config "$BACKUP_FILE"
-    KUBECONFIG="$BACKUP_FILE:kubeconfig.tmp" kubectl config view --flatten > ~/.kube/config
+    KUBECONFIG="kubeconfig.tmp:$BACKUP_FILE" kubectl config view --flatten > ~/.kube/config
     chmod 600 ~/.kube/config
     rm kubeconfig.tmp
 

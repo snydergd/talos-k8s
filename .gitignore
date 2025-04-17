@@ -1,6 +1,3 @@
-_out/talosconfig
-_out/controlplane.yaml
-_out/worker.yaml
 gitea/values.yaml
 woodpecker/values.yaml
 cert-manager/secret.yml

@@ -12,9 +12,6 @@ YAML_FILES=$(cat <<EOF
 gitea/values.yaml
 woodpecker/values.yaml
 cert-manager/secret.yml
-_out/talosconfig
-_out/controlplane.yaml
-_out/worker.yaml
 EOF
 )
 

@@ -71,7 +71,7 @@ resource "proxmox_vm_qemu" "nodes" {
   tags                        = ""
   target_node                 = null
   target_nodes                = ["pve"]
-  vm_state                    = "running"
+  vm_state                    = "started"
   vmid                        = each.value.id
   serial {
     id = 0
