@@ -48,7 +48,7 @@ If you want to make changes to it, you'll want to run it again
 # Start up VMs and configure
 
 1. Go into `proxmox` folder
-2. Run `tofu apply -target=data.talos_cluster_health.cluster_health` (`tofu` being an open source alternative to `tf`) -- optionally with `-auto-approve`
+2. Run `tofu apply -target=modules.k8s` (`tofu` being an open source alternative to `tf`) -- optionally with `-auto-approve`
    - likely need to run it again -- provider doesn't seem to want to start up the VM for me after creation even with `vm_state="running"`
 3. Run simply `tofu apply` to apply remaining resources
 
@@ -56,12 +56,7 @@ If you want to make changes to it, you'll want to run it again
 
 kubeconfig (merge)
 
-    tofu output -raw -show-sensitive kubeconfig > kubeconfig.tmp
-    BACKUP_FILE=~"/.kube/config.backup$(date "+%Y-%m-%d_%H%M%S")"
-    mv ~/.kube/config "$BACKUP_FILE"
-    KUBECONFIG="kubeconfig.tmp:$BACKUP_FILE" kubectl config view --flatten > ~/.kube/config
-    chmod 600 ~/.kube/config
-    rm kubeconfig.tmp
+    ./install-kubeconfig.sh
 
 and talosctl (doesn't merge - so be careful)
 
@@ -82,6 +77,9 @@ slick.
 Solution: Route IPv6 from the internet into load balanced IPs.
 
 BGP allows Cilium to dynamically add this routing, but it needs to be configured first.  For this, see `cilium/bgp` resources.
+
+## ipv6 ingress
+for now, `kubectl edit -n kube-system service cilium-ingress`, then change to `PreferDualStack` and add `IPv6` to the list of IP families.
 
 # OpenEBS
 This is for persistent storage on the cluster
@@ -118,10 +116,17 @@ helm install nginx oci://ghcr.io/nginx/charts/nginx-ingress --version 2.0.1 -f n
 # woodpecker (optional)
 kubectl create namespace woodpecker
 kubectl label --overwrite ns woodpecker pod-security.kubernetes.io/enforce=privileged
-helm install woodpecker woodpecker/woodpecker --version 3.0.6 -f woodpecker/values.yaml -n woodpecker
+helm install woodpecker woodpecker/woodpecker --version 3.1.0 -f woodpecker/values.yaml -n woodpecker
 
 # gitea (optional)
 kubectl create namespace gitea
 helm repo add gitea-charts https://dl.gitea.com/charts/
 helm repo update
 helm install gitea gitea-charts/gitea -f gitea/values.yaml -n gitea
+
+# Mealie (optional)
+kubectl create namespace mealie
+helm repo add smarthall https://smarthall.github.io/helm-charts/
+helm repo update
+helm install mealie smarthall/mealie --version 0.0.10 --values mealie/values.yaml --namespace mealie
+

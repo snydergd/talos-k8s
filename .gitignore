@@ -4,4 +4,3 @@ cert-manager/secret.yml
 cilium/cilium.yaml
 bootstrap.json
 pve.json
-proxmox/state.tf.json

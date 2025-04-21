@@ -7,7 +7,7 @@ terraform {
     }
     helm = {
       source = "opentofu/helm"
-      version = "3.0.0-pre2"
+      #version = "3.0.0-pre2"
     }
   }
 }

@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  hosts:
+  - host: mealie.pve.gdsnyder.info
+    paths:
+    - path: /
+      pathType: Prefix
+  tls:
+  - hosts:
+    - mealie.pve.gdsnyder.info
+
+storage:
+  enabled: true
+  accessMode: ReadWriteOnce

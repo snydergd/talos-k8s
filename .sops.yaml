@@ -15,6 +15,6 @@ creation_rules:
 - path_regex: 'pve.json|bootstrap.json'
   encrypted_regex: 'secret|token_id|.*pass'
   age: *default_keys
-- path_regex: 'proxmox/state.tf.json'
+- path_regex: 'base-terraform/state.tf.json'
   encrypted_regex: 'secret_key'
   age: *default_keys

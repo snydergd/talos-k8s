@@ -21,7 +21,7 @@ EOF
 
 JSON_FILES=$(cat <<EOF
 pve.json
-proxmox/state.tf.json
+base-terraform/state.tf.json
 bootstrap.json
 EOF
 )

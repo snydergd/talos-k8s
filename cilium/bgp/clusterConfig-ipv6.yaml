@@ -1,0 +1,32 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPClusterConfig
+metadata:
+  name: cilium-bgp-ipv6
+spec:
+  bgpInstances:
+  - name: "instance-64512"
+    #localASN: 64512
+    localASN: 4200002024
+    peers:
+    - name: "peer-65000"
+      #peerASN: 65000
+      peerASN: 4200002022
+      peerAddress: "2600:6c46:4600:3c00::1" #2600:6c46:4600:f017::1" #fdf3:1c01:7b2e:10::1" #fdf3:1c01:7b2e::1 # 192.168.254.1
+      peerConfigRef:
+        name: "cilium-peer"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPPeerConfig
+metadata:
+  name: cilium-peer-ipv6
+spec:
+  gracefulRestart:
+    enabled: true
+    restartTimeSeconds: 15
+  families:
+    - afi: ipv6
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: "bgp"
+

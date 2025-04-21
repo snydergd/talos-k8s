@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: letsencrypt-pve-prod
-  namespace: gitea
+  namespace: kube-system
 spec:
   secretName: letsencrypt-pve-prod
   issuerRef:
